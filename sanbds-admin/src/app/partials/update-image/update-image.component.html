@@ -1,0 +1,9 @@
+<form [formGroup]="form" class="form-group">
+  <ng-container formArrayName="list">
+    <div class="row">
+      <mat-checkbox class="col-md-3" *ngFor="let img of imgList; let i = index" [value]="img" [formControlName]="i" (change)="onChange($event)">
+        <img src="http://localhost:8000/storage/{{img}}" alt="" class="w-100">
+      </mat-checkbox>
+    </div>
+  </ng-container>
+</form>

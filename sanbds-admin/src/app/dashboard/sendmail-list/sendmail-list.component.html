@@ -1,0 +1,52 @@
+
+<div class="card">
+  <div class="card-header card-header-warning">
+    <h4 class="card-title">Lịch hẹn của khách hàng</h4>
+    <p class="card-category">Danh sách lịch hẹn của khách hàng</p>
+  </div>
+  <div class="card-body table-responsive">
+    <mat-table #table [dataSource]="dataSource" matSort class="table bg-light">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> STT </mat-header-cell>
+        <mat-cell *matCellDef="let element; index as index"> {{index+1}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary">Email
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.email.substr(0,10)}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="ngayhen">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary">Email
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.ngayhen}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="trangthai">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Trạng thái </mat-header-cell>
+      <mat-cell *matCellDef="let element" > 
+      <ng-container *ngIf="element.trangthai==0||element.trangthai == false">
+        Chưa xử lý
+      </ng-container>
+      <ng-container  *ngIf="element.trangthai==1 ||element.trangthai == true">
+         Đã xử lý
+      </ng-container>
+         </mat-cell>
+  </ng-container>
+      <ng-container matColumnDef="thaotac">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Thao tác </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <a mat-raise-button matTooltip="Xem" [matTooltipPosition]="'above'"
+            [routerLink]="['/sendmail', element.id]">
+            <mat-icon>description</mat-icon>
+          </a>
+        </mat-cell>
+      </ng-container>
+      <div class="table-responsive">
+        <mat-header-row *matHeaderRowDef="displayedColumns" class="text-primary">
+        </mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </div>
+    </mat-table>
+    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 4, 3, 2]">
+    </mat-paginator>
+  </div>
+</div>

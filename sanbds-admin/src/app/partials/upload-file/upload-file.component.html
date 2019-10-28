@@ -1,0 +1,28 @@
+<div class="form-group">
+  <form [formGroup]="uploadForm" (change)="uploadSubmit()">
+    <input formControlName="document" #uploadInput type="file" hidden ng2FileSelect accept=".png" [uploader]="uploader" multiple />
+    <button class="btn btn-accent" (click)="uploadInput.click()">Chọn Ảnh</button>
+    <table *ngIf="uploader.queue.length > 0">
+      <thead>
+        <tr>
+          <th width="90%">
+            File Name
+          </th>
+          <th width="10%">
+            Remove
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of uploader.queue">
+          <th width="90%">
+            {{ item._file.name }} ({{item._file.size}} Bytes)
+          </th>
+          <th class="text-center" width="10%">
+            <button (click)="removeItem(item)">Delete</button>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>

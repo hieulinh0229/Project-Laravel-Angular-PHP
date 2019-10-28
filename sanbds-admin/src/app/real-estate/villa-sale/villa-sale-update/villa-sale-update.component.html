@@ -1,0 +1,180 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Chỉnh sửa</h4>
+            <p class="card-category">Cập nhật thông tin bất động sản</p>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-md-5">
+                  <mat-form-field class="example-full-width">
+                    <input type="email" matInput placeholder="Người đăng bài@ email" disabled>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-3">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Giá bán" formControlName="gia">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Hướng nhà" type="text" formControlName="huongnha">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input type="email" matInput placeholder="Diện tích" formControlName="dientich">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Chiều dài" formControlName="chieudai">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Chiều rộng" type="text" formControlName="chieurong">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input type="email" matInput placeholder="Diện tích tổng sàn" formControlName="dientichtongsan">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <mat-select placeholder="Phòng ngủ" formControlName="phongngu">
+                          <mat-option *ngFor="let sophong of phongngu" [value]="sophong">
+                            {{sophong}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field>
+                    <mat-select placeholder="Phòng tắm" formControlName="phongtam">
+                      <mat-option *ngFor="let sophong of phongtam" [value]="sophong">
+                        {{sophong}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Địa chỉ" type="text" formControlName="diachi">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-7">
+                  <mat-form-field>
+                      <mat-select placeholder="Sân vườn" formControlName="sanvuon">
+                        <mat-option *ngFor="let vuon of sanvuon" [value]="sanvuon">
+                          {{vuon}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+              </div>
+                <div class="col-md-2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Tầng" type="text" formControlName="sotang">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-3">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Năm xây dựng" type="text" formControlName="namxaydung">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field>
+                      <mat-select placeholder="Bể bơi" formControlName="beboi">
+                        <mat-option *ngFor="let beboi of beboi" [value]="beboi">
+                          {{beboi}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field>
+                    <mat-select placeholder="Garage" formControlName="garage">
+                      <mat-option *ngFor="let gara of garage" [value]="garage">
+                        {{gara}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <mat-select placeholder="Tỉnh thành" (valueChange)="filtDistricts($event)"
+                      formControlName="province_id">
+                      <mat-option *ngFor="let province of provinces" [value]="province.id">
+                        {{province.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6" class="example-full-width">
+                  <mat-form-field>
+                    <mat-select placeholder="Quận huyện" formControlName="district_id">
+                      <mat-option *ngFor="let district of districts" [value]="district.id">
+                        {{district.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Mô tả</label>
+                    <textarea class="form-control" rows="5" formControlName="mota"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Ảnh</h4>
+                    <h6 class="card-category text-gray">Chọn ảnh cũ để xóa</h6>
+                    <!-- Update Images -->
+
+                    <app-update-image (bindToParent)="setDeletedImages($event)" *ngIf="realestate" [imgList]="realestate.images">{{realestate.images}}</app-update-image>
+
+                  </div>
+                  <div class="card-body">
+                    <h4 class="card-title">Ảnh mới</h4>
+                    <h6 class="card-category text-gray">Chọn để thêm mới ảnh</h6>
+                    <!-- Upload Files -->
+                    <app-upload-file (bindToParent)="setImages($event)"></app-upload-file>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <mat-checkbox formControlName="published">Công khai bài đăng</mat-checkbox>
+                  </div>
+                </div>
+              </div>
+              <button mat-raised-button type="submit" class="btn btn-danger pull-right" [disabled]="form.invalid">Update Profile</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>

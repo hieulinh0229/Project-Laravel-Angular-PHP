@@ -1,0 +1,86 @@
+<div class="main-content" >
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header card-header-warning">
+        <h4 class="card-title">Lịch hẹn</h4>
+        <p class="card-category">Nội dung lịch hẹn của khách hàng</p>
+      </div>
+      <div class="card-body table-responsive">
+        <form [formGroup]= "sendmailForm" >
+          <div class="row">
+            <div class="col-md-2">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="ID " formControlName="id">
+              </mat-form-field>
+            </div>
+            <div class="col-md-10">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Họ Tên" formControlName="name" >
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Email" type="email" formControlName="email" >
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Ngày hẹn"  formControlName="ngayhen" >
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Nội dung" type="text" formControlName="thongtinthem" >
+              </mat-form-field>
+            </div>
+            <!-- <div class="col-md-4">
+              <a class="text-body">Trạng thái: </a>
+              <ng-container *ngIf="sendmailDetail?.trangthai==0||sendmailDetail?.trangthai==false; else elseTemplate">
+              <a class="alert-danger"> Chưa trả lời</a>
+              </ng-container>
+              <ng-template #elseTemplate>
+                <a class="alert-success">Đã trả lời</a>
+              </ng-template>
+            </div>
+            <div class="col-md-4">
+                  <mat-checkbox value="1" formControlName="trangthai"  (click)="showForm()" *ngIf="sendmailDetail?.trangthai==0">Trả lời</mat-checkbox>
+              </div> -->
+          </div>
+          <button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="back()" *ngIf="isShowForm==false">Quay lại
+            </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="main-content" *ngIf="isShowForm">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-body table-responsive">
+          <form [formGroup]="returnSendmailForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder= "Tiêu đề" formControlName="tieude">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder= "Nội dung phản hồi" formControlName="noidung">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+              </div>
+              <button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="location.back()">Quay
+                lại</button>
+              <button mat-raised-button type="submit" class="btn btn-primary pull-right" >Gởi trả lời</button>
+            </form>
+     
+        </div>
+      </div>
+    </div>
+  </div> -->
+  

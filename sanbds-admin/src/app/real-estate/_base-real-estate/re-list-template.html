@@ -1,0 +1,83 @@
+<div class="card card-plain">
+    <div class="card-header card-header-danger">
+        <h4 class="card-title mt-0">{{ title }}</h4>
+        <p class="card-category"> Các bài đăng về {{ title }} </p>
+    </div>
+    <div class="card-body">
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-form-field fxFlex="50">
+                <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+        </div>
+        <div class="example-container mat-elevation-z8">
+            <mat-table #table [dataSource]="dataSource" matSort class="table bg-light">
+                <!-- ID Column -->
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> No. </mat-header-cell>
+                    <mat-cell *matCellDef="let element; index as index"> {{ index+1 }} </mat-cell>
+                </ng-container>
+
+                <!-- Địa chỉ Column -->
+                <ng-container matColumnDef="diachi">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Địa chỉ
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.diachi}} </mat-cell>
+                </ng-container>
+
+                <!-- Tỉnh thành Column -->
+                <ng-container matColumnDef="province">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Tỉnh thành
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.province }} </mat-cell>
+                </ng-container>
+
+                <!-- Giá Column -->
+                <ng-container matColumnDef="edit">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Edit </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.gia}} </mat-cell>
+                </ng-container>
+
+                <!-- Trạng thái Column -->
+                <ng-container matColumnDef="trangthai">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Status
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <mat-slide-toggle matTooltip="Trạng thái" [matTooltipPosition]="'above'"  class="example-margin" [checked]=element.trangthai|booleanConvert
+                            (click)="updateStatus(element)">
+                        </mat-slide-toggle>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Publish Column -->
+                <ng-container matColumnDef="published">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Publish
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <mat-slide-toggle matTooltip="Công khai" [matTooltipPosition]="'above'"  class="example-margin" [checked]=element.published|booleanConvert
+                            (click)="updatePublicate(element)">
+                        </mat-slide-toggle>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Edit Column -->
+                <ng-container matColumnDef="gia">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Edit </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <a mat-raise-button matTooltip="Sửa" [matTooltipPosition]="'above'"  [routerLink]="[routerUpdating, element.id]">
+                            <mat-icon>edit</mat-icon>
+                        </a>
+                    </mat-cell>
+                </ng-container>
+
+                <div class="table-responsive">
+                    <mat-header-row *matHeaderRowDef="displayedColumns" class="text-primary">
+                    </mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </div>
+            </mat-table>
+            <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 50]">
+
+            </mat-paginator>
+        </div>
+    </div>
+</div>

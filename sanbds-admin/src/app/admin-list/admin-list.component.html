@@ -1,0 +1,72 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+            <div class="card card-plain">
+              <div class="card-header card-header-danger">
+                  <h4 class="card-title mt-0">Quản trị</h4>
+                  <p class="card-category"> Quản lý quản trị viên</p>
+              </div>
+              <div class="card-body">
+                  <div fxLayout="row" fxLayoutAlign="space-around center">
+                      <mat-form-field fxFlex="50">
+                          <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+                      </mat-form-field>
+                  </div>
+                  <div class="example-container mat-elevation-z8">
+                      <mat-table #table [dataSource]="dataSource" matSort class="table bg-light">
+                          <!-- ID Column -->
+                          <ng-container matColumnDef="id">
+                              <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> STT </mat-header-cell>
+                              <mat-cell *matCellDef="let element; index as index"> {{index+1}} </mat-cell>
+                          </ng-container>
+            
+                          <!-- Họ Column -->
+                          <ng-container matColumnDef="ho">
+                              <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Họ
+                              </mat-header-cell>
+                              <mat-cell *matCellDef="let element"> {{element.ho}} </mat-cell>
+                          </ng-container>
+            
+                          <!-- Tên Column -->
+                          <ng-container matColumnDef="name">
+                              <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Tên
+                              </mat-header-cell>
+                              <mat-cell *matCellDef="let element"> {{element.name }} </mat-cell>
+                          </ng-container>
+            
+                          <!-- Email Column -->
+                          <ng-container matColumnDef="email">
+                              <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Email </mat-header-cell>
+                              <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+                          </ng-container>
+          
+            
+                          <!-- Edit Column -->
+                          <ng-container matColumnDef="edit">
+                              <mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Quyền </mat-header-cell>
+                              <mat-cell *matCellDef="let element">
+                                  <a mat-raise-button matTooltip="Xem" [matTooltipPosition]="'above'"  [routerLink]="[routerDetail, element.id]">
+                                      <mat-icon>description</mat-icon>
+                                  </a>
+                              </mat-cell>
+                          </ng-container>
+            
+                          <div class="table-responsive">
+                              <mat-header-row *matHeaderRowDef="displayedColumns" class="text-primary">
+                              </mat-header-row>
+                              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                          </div>
+                      </mat-table>
+                      <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 50]">
+            
+                      </mat-paginator>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
