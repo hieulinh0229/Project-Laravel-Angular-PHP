@@ -1,0 +1,32 @@
+<a routerLink="/apartment-sale/detail/{{apartment.id}}" class="prop-entry d-block">
+  <figure>
+    <img src="http://localhost:8000/storage/{{apartment.images[0]}}" alt="Image" class="img-fluid">
+  </figure>
+  <div class="prop-text">
+    <div class="inner">
+      <span class="price rounded">{{ apartment.gia }} tỷ</span>
+      <h3 class="title">{{ apartment.diachi }}</h3>
+      <p class="location">{{apartment.district}}, {{apartment.province}}</p>
+    </div>
+    <div class="prop-more-info">
+      <div class="inner d-flex">
+        <div class="col">
+          <span>Diện tích:</span>
+          <strong>{{ apartment.dientich }}m<sup>2</sup></strong>
+        </div>
+        <div class="col">
+          <span>Phòng ngủ:</span>
+          <strong>{{ apartment.phongngu }}</strong>
+        </div>
+        <div class="col">
+          <span>Phòng tắm:</span>
+          <strong>{{ apartment.phongtam }}</strong>
+        </div>
+        <div class="col">
+          <span>Số tầng: </span>
+          <strong>{{ apartment.sotang }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

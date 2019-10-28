@@ -1,0 +1,200 @@
+
+
+<div class="pt-5">
+    <div class="container">
+      <form class="row mb-5" form [formGroup]="formSeach" (ngSubmit)="onSearch()">
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="select-wrap">
+            <span class="icon icon-arrow_drop_down"></span>
+            <select class="form-control d-block rounded-0" formControlName="dientich">
+              <option value="null" selected disabled>Diện tích</option>
+              <option value="650">Dưới 650</option>
+              <option value="700">Dưới 700</option>
+              <option value="800">Dưới 800</option>
+              <option value="900">Dưới 900</option>
+              <option value="1000">Dưới 1000</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="select-wrap">
+            <span class="icon icon-arrow_drop_down"></span>
+            <select name="offer-types" id="offer-types" class="form-control d-block rounded-0" formControlName="huongnha">
+              <option value="null" selected disabled>Hướng</option>
+              <option value="Đông">Đông</option>
+              <option value="Nam">Nam</option>
+              <option value="Tây">Tây</option>
+              <option value="Bắc">Bắc</option>
+              <option value="Đông Nam">Đông Nam</option>
+              <option value="Tây Bắc">Tây Bắc</option>
+              <option value="Tây Nam">Tây Nam</option>
+              <option value="Đông Bắc">Đông Bắc</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="form-group">
+            <select class="form-control" (change)="filterDistricts($event)">
+              <option selected disabled=disabled>Chọn tỉnh thành</option>
+              <option *ngFor="let province of provinces" [value]=province.id>
+                {{province.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="form-group">
+            <select class="form-control" formControlName="district_id">
+              <option value="null" selected disabled>Chọn quận huyện</option>
+              <option *ngFor="let district of districts" [value]=district.id>
+                {{ district.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="select-wrap">
+            <span class="icon icon-arrow_drop_down"></span>
+            <select name="offer-types" id="offer-types" class="form-control d-block rounded-0" formControlName="phongngu"
+              placeholder="Chọn phòng ngủ">
+              <option value="null" selected disabled>Phòng ngủ</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="select-wrap">
+            <span class="icon icon-arrow_drop_down"></span>
+            <select name="offer-types" id="offer-types" class="form-control d-block rounded-0" formControlName="phaply">
+              <option value="null" selected disabled>Pháp lý</option>
+              <option value="Nhà có sổ hồng">Sổ hồng</option>
+              <option value="Nhà có sổ đỏ">Sổ đỏ</option>
+  
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="select-wrap">
+            <span class="icon icon-arrow_drop_down"></span>
+            <select name="offer-types" id="offer-types" class="form-control d-block rounded-0" formControlName="gia">
+                <option value="null" selected disabled >Chọn giá</option>
+                <option value=5>Dưới 5 triệu</option>
+                <option value=10>Từ 5 Triệu -> 10 Triệu</option>
+                <option value=15>Từ 10 Triệu -> 15 Triệu</option>
+                <option value=20>Từ 15 Triệu -> 20 Triệu</option>
+              </select>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <input type="submit" class="btn btn-primary btn-block form-control-same-height rounded-0" value="Tìm kiếm">
+        </div>
+      </form>
+    </div>
+  </div>
+<div class="site-section site-section-sm bg-light">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12">
+        <div class="site-section-title">
+          <h2>BDS mới cho bạn</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <a class="alert alert-warning" *ngIf="houseRentList?.length==0">Không có dữ liệu</a>
+      <div class="col-md-6 col-lg-4 mb-4" *ngFor="let item of houseRentList|paginate: { itemsPerPage: 6, currentPage: p }">
+        <app-house-rent-poster [houseRent]="item"></app-house-rent-poster>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="site-pagination">
+          <ul class="pagination-sm">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-7 text-center mb-5">
+        <div class="site-section-title">
+          <h2>Dịch vụ</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-house"></span>
+          <h2 class="service-heading">Vùng ngoại ô</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-sold"></span>
+          <h2 class="service-heading">Nhà bán</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-camera"></span>
+          <h2 class="service-heading">Ưu tiên an ninh</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-house"></span>
+          <h2 class="service-heading">Vùng ngoại ô</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-sold"></span>
+          <h2 class="service-heading">Nhà bán</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-camera"></span>
+          <h2 class="service-heading">Ưu tiên an ninh</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="site-section site-section-sm bg-primary">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h2 class="text-white">Những dự án BDS giành cho bạn !</h2>
+        <p class="lead text-white-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <a href="#" class="btn btn-outline-primary btn-block py-3 btn-lg">Xem chi tiết</a>
+      </div>
+    </div>
+  </div>
+</div>

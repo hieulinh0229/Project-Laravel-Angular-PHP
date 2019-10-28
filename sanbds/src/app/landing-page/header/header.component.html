@@ -1,0 +1,86 @@
+<div class="site-wrap">
+  <div class="site-mobile-menu">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close mt-3">
+        <span class="icon-close2 js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div> <!-- .site-mobile-menu -->
+  <div class="border-bottom bg-white top-bar">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-6 col-md-6">
+          <p class="mb-0">
+            <a href="#" routerLink="/about" class="mr-3"><span class="text-black fl-bigmug-line-phone351"></span> <span
+                class="d-none d-md-inline-block ml-2">+84969999999</span></a>
+            <a href="#" routerLink="/about"><span class="text-black fl-bigmug-line-email64"></span> <span
+                class="d-none d-md-inline-block ml-2">gragas@gmail.com</span></a>
+          </p>
+        </div>
+        <div class="col-6 col-md-6 text-right">
+          <a href="#" routerLink="/about"class="mr-3"><span class="text-black icon-facebook"></span></a>
+          <a href="#" routerLink="/about"class="mr-3"><span class="text-black icon-twitter"></span></a>
+          <a *ngIf="!isLogged; else isNotLogged" routerLink="/login"
+            class="mr-0 text-dark">Log In</a>
+          <ng-template #isNotLogged>
+            <a *ngIf="!!isLogged" routerLink="/user" class="mr-0 text-dark">{{ user?.email }}</a> &nbsp;
+            <a *ngIf="!!isLogged" title="LOG OUT" class="fa fa-sign-out " style="cursor:pointer" aria-hidden="true"  (click)="logOut()" ></a>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="site-navbar">
+    <div class="container py-1">
+      <div class="row align-items-center">
+        <div class="col-8 col-md-8 col-lg-4">
+          <h1 class=""><a class="h5 text-uppercase text-black"><strong>BDS Gragas<span
+                  class="text-danger">.</span></strong></a></h1>
+        </div>
+        <div class="col-4 col-md-4 col-lg-8">
+          <nav class="site-navigation text-right text-md-right" role="navigation">
+
+            <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#"
+                class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+            <ul class="site-menu js-clone-nav d-none d-lg-block">
+              <li routerLinkActive="active">
+                <a routerLink="/home">Trang chủ</a>
+              </li>
+              <li class="has-children" routerLinkActive="active">
+                <a routerLink="/rent">Cho thuê</a>
+                <ul class="dropdown">
+                  <li routerLinkActive="active"><a routerLink="/villa-rent">Biệt thự liền kề</a></li>
+                  <li routerLinkActive="active"><a routerLink="/apartment-rent">Căn hộ, chung cư</a></li>
+                  <li routerLinkActive="active"><a routerLink="/house-rent">Nhà phố</a></li>
+                  <li routerLinkActive="active"><a routerLink="/plot-rent">Đất nền</a></li>
+                </ul>
+              </li>
+              <li class="has-children" routerLinkActive="active">
+                <a routerLink="/sale">Bán</a>
+                <ul class="dropdown">
+                  <li routerLinkActive="active"><a routerLink="/villa-sale">Biệt thự liền kề</a></li>
+                  <li routerLinkActive="active"><a routerLink="/apartment-sale">Căn hộ, chung cư</a></li>
+                  <li routerLinkActive="active"><a routerLink="/house-sale">Nhà phố</a></li>
+                  <li routerLinkActive="active"><a routerLink="/plot-sale">Đất nền</a></li>
+                </ul>
+              </li>
+              <li routerLinkActive="active"><a routerLink="/project">Dự án</a></li>
+              <li routerLinkActive="active"><a routerLink="/create">Đăng bài</a></li>              
+              <li routerLinkActive="active"><a routerLink="/about">Liên hệ</a></li>
+
+              <li class="has-children" routerLinkActive="active">
+                <a routerLink="">Hỗ Trợ Khách Hàng</a>
+                <ul class="dropdown">
+                  <li routerLinkActive="active"><a routerLink="/dangnhap">Đăng Nhập</a></li>
+                  <li routerLinkActive="active"><a routerLink="/dangky">Đăng Ký</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

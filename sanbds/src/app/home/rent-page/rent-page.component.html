@@ -1,0 +1,216 @@
+
+<app-big-carousel></app-big-carousel>
+
+<div class="site-section site-section-sm bg-light">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12">
+        <div class="site-section-title">
+          <h2>Căn hộ - Chung cư</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-md-6 col-lg-4 mb-4" *ngFor="let item of apartmentRent|paginate:{itemsPerPage: 6, currentPage: a, id: 'a'} ">
+        <app-apartment-rent-poster [apartment]="item"></app-apartment-rent-poster>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+          <ul class="pagination-sm">
+              <pagination-controls (pageChange)="a = $event" id ="a"></pagination-controls>
+            </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="site-section site-section-sm bg-light">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12">
+        <div class="site-section-title">
+          <h2>Biệt thự</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-md-6 col-lg-4 mb-4" *ngFor="let item of villaRent|paginate: { itemsPerPage: 6, currentPage: v, id: 'v' }">
+        <app-villa-rent-poster [villa]="item"></app-villa-rent-poster>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+          <ul class="pagination-sm">
+              <pagination-controls (pageChange)="v = $event" id= 'v'></pagination-controls>
+            </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section site-section-sm bg-light">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12">
+        <div class="site-section-title">
+          <h2>Nhà phố</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-md-6 col-lg-4 mb-4" *ngFor="let item of houseRent |paginate: { itemsPerPage: 6, currentPage: h, id: 'h' }">
+        <app-house-rent-poster [houseRent]="item"></app-house-rent-poster>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+          <ul class="pagination-sm">
+              <pagination-controls (pageChange)="h = $event" id= 'h'></pagination-controls>
+            </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section site-section-sm bg-light">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12">
+        <div class="site-section-title">
+          <h2>Đất nền</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-md-6 col-lg-4 mb-4" *ngFor="let plotRent of plotRent |paginate: { itemsPerPage: 6, currentPage: p }">
+        <app-plot-rent-poster [plotRent]="plotRent"></app-plot-rent-poster>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+          <ul class="pagination-sm">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-7 text-center mb-5">
+        <div class="site-section-title">
+          <h2>Dịch vụ</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-house"></span>
+          <h2 class="service-heading">Vùng ngoại ô</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-sold"></span>
+          <h2 class="service-heading">Nhà bán</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-camera"></span>
+          <h2 class="service-heading">Ưu tiên an ninh</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-house"></span>
+          <h2 class="service-heading">Vùng ngoại ô</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-sold"></span>
+          <h2 class="service-heading">Nhà bán</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-camera"></span>
+          <h2 class="service-heading">Ưu tiên an ninh</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section bg-light">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7 text-center">
+        <div class="site-section-title">
+          <h2>Dự Án</h2>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="100">
+        <a href="#"><img src="assets/images/img_4.jpg" alt="Image" class="img-fluid"></a>
+        <div class="p-4 bg-white">
+          <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
+          <h2 class="h5 text-black mb-3"><a href="#">Khi nào bán &amp; Bán bao nhiêu?</a></h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias enim, ipsa exercitationem veniam quae sunt.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="200">
+        <a href="#"><img src="assets/images/img_2.jpg" alt="Image" class="img-fluid"></a>
+        <div class="p-4 bg-white">
+          <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
+          <h2 class="h5 text-black mb-3"><a href="#">Khi nào bán &amp; Bán bao nhiêu?</a></h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias enim, ipsa exercitationem veniam quae sunt.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="300">
+        <a href="#"><img src="assets/images/img_3.jpg" alt="Image" class="img-fluid"></a>
+        <div class="p-4 bg-white">
+          <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
+          <h2 class="h5 text-black mb-3"><a href="#">Khi nào bán  &amp; Bán bao nhiêu?</a></h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias enim, ipsa exercitationem veniam quae sunt.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- Our Agents -->
+<app-our-agents></app-our-agents>
+
+<div class="site-section site-section-sm bg-primary">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h2 class="text-white">Những dự án BDS giành cho bạn !</h2>
+        <p class="lead text-white-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <a href="#" class="btn btn-outline-primary btn-block py-3 btn-lg">Xem chi tiết</a>
+      </div>
+    </div>
+  </div>
+</div>

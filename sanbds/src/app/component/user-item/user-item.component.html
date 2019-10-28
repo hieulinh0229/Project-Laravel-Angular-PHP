@@ -1,0 +1,10 @@
+<div class="d-flex">
+  <div>
+    <img src="https://img.icons8.com/color/1600/circled-user-male-skin-type-1-2.png" class="rounded"
+      alt="Cinque Terre">
+  </div>
+  <div>
+    <div><span class="font-weight-bold">{{ displayName }}</span></div>
+    <div><span [ngClass]="{'text-success': isOnline(), 'text-danger' : !isOnline()}">{{ status }}</span></div>
+  </div>
+</div>

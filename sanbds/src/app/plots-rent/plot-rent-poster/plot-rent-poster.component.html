@@ -1,0 +1,32 @@
+<a routerLink="/plot-rent/detail/{{plotRent.id}}" class="prop-entry d-block">
+  <figure>
+    <img src="http://localhost:8000/storage/{{plotRent?.images[0]}}" alt="Image" class="img-fluid">
+  </figure>
+  <div class="prop-text">
+    <div class="inner">
+      <span class="price rounded">{{ plotRent.gia }}triệu/tháng</span>
+      <h3 class="title">{{ plotRent.diachi }}</h3>
+      <p class="location">{{ plotRent.district }}, {{ plotRent.province}}</p>
+    </div>
+    <div class="prop-more-info">
+      <div class="inner d-flex">
+        <div class="col">
+          <span>Diện tích:</span>
+          <strong>{{plotRent.dientich}}m<sup>2</sup></strong>
+        </div>
+        <div class="col">
+          <span>Chiều dài:</span>
+          <strong>{{ plotRent.chieudai }} m</strong>
+        </div>
+        <div class="col">
+          <span>Chiều rộng:</span>
+          <strong>{{ plotRent.chieurong }} m</strong>
+        </div>
+        <div class="col">
+          <span>Hướng:</span>
+          <strong>{{ plotRent.huong }} </strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

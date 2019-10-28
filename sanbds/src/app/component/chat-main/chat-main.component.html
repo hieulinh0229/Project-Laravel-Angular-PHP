@@ -1,0 +1,19 @@
+<div class="row chatroom">
+  <!-- Left side -->
+  <div class="col-md-3 rounded border">
+    <app-userlist></app-userlist>
+  </div>
+  <!-- Right side -->
+  <div class="col-md-9 rounded border">
+    <!-- Messages show -->
+    <div #scroller class="row list">
+      <app-message-list></app-message-list>
+    </div>
+    <!-- Form Chat -->
+    <div class="row">
+      <div class="col">
+        <app-chat-form></app-chat-form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div>
+  <div class="w-75">
+    <div class="d-flex">
+      <div class="align-middle">
+        <img class="card-img-overlay" src="https://img.icons8.com/color/1600/circled-user-male-skin-type-1-2.png"
+          class="rounded" alt="Cinque Terre">
+      </div>
+      <div class="align-middle">
+        <div>
+            <p [ngClass]="{'message': !isOwnMessage, 'ownmessage': isOwnMessage}">{{ messageContent }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

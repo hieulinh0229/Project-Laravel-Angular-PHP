@@ -1,0 +1,74 @@
+<div class="container"><br>
+  <h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif">THAY ĐỔI THÔNG TIN ĐẤT BÁN</h3>
+  <form [formGroup]="plotSaleForm" (ngSubmit)="onUpdatePlotSale()">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label>Gía</label>
+        <input type="number" class="form-control" placeholder="Gía" formControlName="gia">
+        <span style="font-size:14px"
+          *ngIf="plotSaleForm.controls.gia.touched && plotSaleForm.hasError('required','gia')">
+          <ul style="color: red">
+            <li> Gía không được để trống</li>
+          </ul>
+        </span>
+      </div>
+      <div class="form-group col-md-4">
+        <label>Ngày hết hạn</label>
+        <input type="date" class="form-control" placeholder="Ngày hết hạn" formControlName="ngayhethan">
+      </div>
+      <div class="form-group col-md-4">
+        <label>Hướng</label>
+        <input type="text" class="form-control" placeholder="Hướng" formControlName="huong">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Địa chỉ</label>
+      <input type="text" class="form-control" placeholder="Địa chỉ" formControlName="diachi">
+      <span style="font-size:14px"
+        *ngIf="plotSaleForm.controls.diachi.touched && plotSaleForm.hasError('required','diachi')">
+        <ul style="color: red">
+          <li> Địa chỉ không được để trống</li>
+        </ul>
+      </span>
+    </div>
+    <div class="form-group">
+      <label>Mô tả</label>
+      <input type="text" class="form-control" placeholder="Mô tả" formControlName="mota">
+
+    </div>
+    <div class="form-group">
+      <label>Ảnh</label>
+      <input type="file" name="file[]" class="form-control" multiple="">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label>Chiều dài</label>
+        <input type="number" class="form-control" placeholder="Chiều dài" formControlName="chieudai">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Chiều rộng </label>
+        <input type="number" class="form-control" placeholder="Chiều rộng" formControlName="chieurong">
+      </div>
+
+      <div class="form-group col-md-3">
+        <label>Diện tích</label>
+        <input type="number" class="form-control" placeholder="Diện tích tổng sàn" formControlName="dientich">
+        <span style="font-size:14px"
+          *ngIf="plotSaleForm.controls.dientich.touched && plotSaleForm.hasError('required','dientich')">
+          <ul style="color: red">
+            <li> Diện tích không được để trống</li>
+          </ul>
+        </span>
+      </div>
+      <div class="form-group col-md-3">
+        <label>Pháp lý</label>
+        <select class="form-control" formControlName="phaply">
+          <option selected value="">Chọn</option>
+          <option value="sodo">Sổ đỏ</option>
+          <option value="sohong">Sổ hồng</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">UPDATE</button>
+  </form>
+</div>

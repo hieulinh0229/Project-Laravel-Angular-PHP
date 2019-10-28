@@ -1,0 +1,32 @@
+<a routerLink="/villa-sale/detail/{{villa.id}}" class="prop-entry d-block">
+  <figure>
+    <img src="http://localhost:8000/storage/{{villa.images[0]}}" alt="Image" class="img-fluid">
+  </figure>
+  <div class="prop-text">
+    <div class="inner">
+      <span class="price rounded">{{ villa.gia }} tỷ</span>
+      <h3 class="title">{{ villa.diachi }}</h3>
+      <p class="location">{{ villa.district }}, {{ villa.province }}</p>
+    </div>
+    <div class="prop-more-info">
+      <div class="inner d-flex">
+        <div class="col">
+          <span>Diện tích:</span>
+          <strong>{{ villa.dientich }}m<sup>2</sup></strong>
+        </div>
+        <div class="col">
+          <span>Phòng ngủ:</span>
+          <strong>{{ villa.phongngu }}</strong>
+        </div>
+        <div class="col">
+          <span>Phòng tắm:</span>
+          <strong>{{ villa.phongtam }}</strong>
+        </div>
+        <div class="col">
+          <span>Số tầng: </span>
+          <strong>{{ villa.sotang }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

@@ -1,0 +1,133 @@
+<div class="site-blocks-cover overlay" style="background-image: url(assets/images/hero_bg_2.jpg);" data-aos="fade"
+  data-stellar-background-ratio="0.5">
+  <div class="container">
+    <div class="row align-items-center justify-content-center text-center">
+      <div class="col-md-10">
+        <span class="d-inline-block text-white px-3 mb-3 property-offer-type rounded">Chi Tiết Căn Hộ Cho Thuê</span>
+        <h1 class="mb-2">{{ apartment.diachi }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section site-section-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8" style="margin-top: -150px;">
+        <div class="mb-5">
+          <div class="slide-one-item home-slider owl-carousel">
+            <div><img src="assets/images/img_1.jpg" alt="Image" class="img-fluid"></div>
+            <div><img src="assets/images/img_2.jpg" alt="Image" class="img-fluid"></div>
+            <div><img src="assets/images/img_3.jpg" alt="Image" class="img-fluid"></div>
+          </div>
+        </div>
+        <div class="bg-white">
+          <div class="row mb-5">
+            <!-- <div class="col-md-6">
+            <strong class="text-success h1 mb-3">10 tỷ</strong>
+          </div> -->
+            <div class="col-md-6">
+              <ul class="property-specs-wrap mb-3 mb-lg-0  float-lg-right">
+                <li>
+                  <span class="property-specs">Phòng ngủ</span>
+                  <span class="property-specs-number">{{ apartment.phongngu }}<sup>+</sup></span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Phòng tắm</span>
+                  <span class="property-specs-number">{{ apartment.phongtam }}</span>
+
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+              <span class="d-inline-block text-black mb-0 caption-text">Kiểu Nhà</span>
+              <strong class="d-block">Căn Hộ Cao Cấp</strong>
+            </div>
+            <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+              <span class="d-inline-block text-black mb-0 caption-text">Năm Xây Dựng</span>
+              <strong class="d-block">{{ apartment.namxaydung }}</strong>
+            </div>
+            <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+              <span class="d-inline-block text-black mb-0 caption-text">Giá thuê </span>
+              <strong class="d-block">{{apartment.gia}} triệu/tháng</strong>
+            </div>
+          </div>
+          <h2 class="h4 text-black">Các Thông Tin Cần Biết</h2>
+          <p>Tên Căn Hộ: {{ apartment.tenchungcu }}</p>
+          <p>Địa Chỉ: {{ apartment.diachi }} .{{ apartment.district }} . {{ apartment.province }}</p>
+          <p>Hướng: {{ apartment.huongnha }}</p>
+          <p>Vị trí căn hộ: {{ apartment.sotang }}</p>
+          <p>Chiều dài: {{ apartment.chieudai }}m</p>
+          <p>Chiều ngang: {{ apartment.chieurong }}m</p>
+          <p><span>Diện tích căn hộ: </span><span>{{ apartment.dientich }}m</span><sup>2</sup></p>
+          <p>{{ apartment.mota }}</p>
+          <p>Ngày đăng: {{ apartment.ngaydang }}</p>
+          <p>Ngày hết hạn: {{ apartment.ngayhethan }}</p>
+          <p *ngIf="apartment?.user_name">Người đăng: {{apartment?.user_name}}</p>
+          <p *ngIf="apartment?.user_name == null">Người đăng: Chưa có thông tin</p>
+
+          <app-photo-gallery [images]="apartment.images"></app-photo-gallery>
+        </div>
+      </div>
+      <div class="col-lg-4 pl-md-5">
+
+        <div class="bg-white widget border rounded">
+          <button type="button" class="btn btn-primary btn-lg" [routerLink]="['/sendmail']"
+            style="text-align: center; width: 100%;">Đặt Lịch Hẹn Xem BDS</button>
+        </div>
+
+
+        <div class="bg-white widget border rounded">
+          <h3 class="h4 text-black widget-title mb-3">Thông Tin Về Công Ty Chúng Tôi</h3>
+          <p>Phân khu An Cựu City là thành công tiếp nối của khu đô thị An Center Park tại Huế - Khu đô thị xanh đầu
+            tiên được thiết
+            kế và xây dựng theo hình mẫu của Phú Mỹ Hưng. Theo đó, phân khu Center Park gồm các dãy shophouse thông minh
+            và 5 toà
+            nhà căn hộ trung tâm đẹp mắt. Các toà căn hộ này hứa hẹn sẽ khuấy động thị trường bất động sản Huế trong
+            thời gian sắp
+            tới.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="site-section site-section-sm bg-light">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-12">
+        <div class="site-section-title mb-5">
+          <h2>Các Căn Hộ Có Giá Tương Tự Có Thể Tham Khảo</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-md-6 col-lg-4 mb-4" *ngFor="let item of compatibles">
+        <app-apartment-rent-poster [apartment]='item'></app-apartment-rent-poster>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="site-section site-section-sm bg-primary">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <h2 class="text-white">Thông Tin Chi Tiết Các Đơn Vị Liên Kết</h2>
+          <p class="lead text-white-5">Ngân Hàng Thương Mại Cổ Phần VietComBank.</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <a href="http://www.vietcombank.com.vn" class="btn btn-outline-primary btn-block py-3 btn-lg">Nhấn Vào Đây Để
+            Liên Hệ</a>
+        </div>
+      </div>
+    </div>
+  </div>

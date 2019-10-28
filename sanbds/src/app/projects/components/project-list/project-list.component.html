@@ -1,0 +1,12 @@
+
+    <div class="site-section border-bottom">
+      
+      <div class="container">
+          <h3> Những dự án của chúng tôi đang triển khai</h3>
+        <div class="row align-items-center">
+          <div class="col-md-12"  *ngFor="let project of projectList" style="margin-top: 12px">
+            <app-project-poster [project]="project"></app-project-poster>
+          </div>
+        </div>
+      </div>
+    </div>

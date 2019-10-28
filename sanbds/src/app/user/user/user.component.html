@@ -1,0 +1,466 @@
+<div class="container bootstrap snippet">
+  <div class="row">
+    <div class="col-sm-10">
+      <h1>Thông tin cá nhân</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="text-center">
+        <img *ngIf="userProfile" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+          class="avatar img-circle img-thumbnail" alt="avatar">
+        <img *ngIf="!userProfile" src="{{userProfile.images}}" class="avatar img-circle img-thumbnail" alt="avatar">
+        <h6>Hình đại diện</h6>
+      </div>
+      <br>
+    </div>
+    <div class="col-sm-9">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#home">Thông tin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#menu1">Bài đăng cho thuê</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#menu2">Bài đăng bán</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab"  routerLink="/home">Về trang chủ</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="home">
+          <hr>
+          <form class="form" id="registrationForm" [formGroup]="userForm" (ngSubmit)="onUpdateUser()">
+            <div class="form-group">
+              <div class="col-xs-6">
+                <label for="first_name">
+                  <h4>Họ</h4>
+                </label>
+                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Họ"
+                  title="enter your first name if any." formControlName="ho">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-6">
+                <label for="last_name">
+                  <h4>Tên</h4>
+                </label>
+                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Tên"
+                  title="enter your last name if any." formControlName="name">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-6">
+                <label for="phone">
+                  <h4>Điện thoại</h4>
+                </label>
+                <input type="text" class="form-control" name="phone" id="phone" placeholder="Số điện thoại"
+                  title="enter your phone number if any." formControlName="sdt">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-6">
+                <label for="email">
+                  <h4>Email</h4>
+                </label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com"
+                  title="enter your email." formControlName="email">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-6">
+                <label for="password">
+                  <h4>Mật khẩu</h4>
+                </label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu"
+                  title="enter your password.">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-6">
+                <label for="password2">
+                  <h4>Kiểm tra mật khẩu</h4>
+                </label>
+                <input type="password" class="form-control" name="password2" id="password2" placeholder="Mật khẩu"
+                  title="enter your password2.">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-6">
+                <label for="images">
+                  <h4>Đổi ảnh đại diện</h4>
+                </label>
+                <input type="file" class="text-center center-block file-upload" name="images" formControlName="images">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-xs-12">
+                <br>
+                <button class="btn btn-lg btn-success" type="submit"> Cập nhật</button>
+        
+              </div>
+            </div>
+          </form>
+          <hr>
+        </div>
+
+        <div class="tab-pane" id="menu1">
+          <div class="site-section site-section-sm bg-light">
+            <div class="container">
+              <div class="row mb-5">
+                <div class="col-12">
+                  <div class="site-section-title">
+                    <h2>Căn hộ - Chung cư</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-12 ">
+                  <table class="table table-light">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>STT</th>
+                        <th>Điạ chỉ</th>
+                        <th>Ngày hết hạn</th>
+                        <th>Trạng thái</th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      *ngFor="let item of apartmentRent|paginate:{itemsPerPage: 6, currentPage: a, id: 'a'}; let i = index">
+                      <tr *ngIf="item.user_id == user.id">
+                        <td>{{i+1}}</td>
+                        <td>{{item.diachi}}</td>
+                        <td>{{item.ngayhethan}}</td>
+                        <td>{{item.trangthai==0?'Chưa thuê':"Đã thuê"}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <ul class="pagination-sm">
+                    <pagination-controls (pageChange)="a = $event" id="a"></pagination-controls>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="site-section site-section-sm bg-light">
+            <div class="container">
+              <div class="row mb-5">
+                <div class="col-12">
+                  <div class="site-section-title">
+                    <h2>Nhà phố</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-12 ">
+                  <table class="table table-light">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>STT</th>
+                        <th>Điạ chỉ</th>
+                        <th>Ngày hết hạn</th>
+                        <th>Trạng thái</th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      *ngFor="let item of houseRent|paginate:{itemsPerPage: 6, currentPage: h, id: 'h'}; let i = index">
+                      <tr *ngIf="item.user_id == user.id">
+                        <td>{{i+1}}</td>
+                        <td>{{item.diachi}}</td>
+                        <td>{{item.ngayhethan}}</td>
+                        <td>{{item.trangthai==0?'Chưa thuê':"Đã thuê"}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <ul class="pagination-sm">
+                    <pagination-controls (pageChange)="h = $event" id="h"></pagination-controls>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="site-section site-section-sm bg-light">
+            <div class="container">
+              <div class="row mb-5">
+                <div class="col-12">
+                  <div class="site-section-title">
+                    <h2>Biệt thự</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-12 ">
+                  <table class="table table-light">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>STT</th>
+                        <th>Điạ chỉ</th>
+                        <th>Ngày hết hạn</th>
+                        <th>Trạng thái</th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      *ngFor="let item of villaRent|paginate:{itemsPerPage: 6, currentPage: v, id: 'v'}; let i = index">
+                      <tr *ngIf="item.user_id==user.id">
+                        <td>{{i+1}}</td>
+                        <td>{{item.diachi}}</td>
+                        <td>{{item.ngayhethan}}</td>
+                        <td>{{item.trangthai==0?'Chưa thuê':"Đã thuê"}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <ul class="pagination-sm">
+                    <pagination-controls (pageChange)="v = $event" id="v"></pagination-controls>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="site-section site-section-sm bg-light">
+            <div class="container">
+              <div class="row mb-5">
+                <div class="col-12">
+                  <div class="site-section-title">
+                    <h2>Đất nền</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-12 ">
+                  <table class="table table-light">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>STT</th>
+                        <th>Điạ chỉ</th>
+                        <th>Ngày hết hạn</th>
+                        <th>Trạng thái</th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      *ngFor="let item of plotRent|paginate:{itemsPerPage: 6, currentPage: p, id: 'p'}; let i = index">
+                      <tr *ngIf="item.user_id==user.id">
+                        <td>{{i+1}}</td>
+                        <td>{{item.diachi}}</td>
+                        <td>{{item.ngayhethan}}</td>
+                        <td>{{item.trangthai==0?'Chưa thuê':"Đã thuê"}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <ul class="pagination-sm">
+                    <pagination-controls (pageChange)="p = $event" id="p"></pagination-controls>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="menu2">
+          <div class="site-section site-section-sm bg-light">
+            <div class="container">
+              <div class="row mb-5">
+                <div class="col-12">
+                  <div class="site-section-title">
+                    <h2>Căn hộ - Chung cư</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-12 ">
+                  <table class="table table-light">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>STT</th>
+                        <th>Điạ chỉ</th>
+                        <th>Ngày hết hạn</th>
+                        <th>Trạng thái</th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      *ngFor="let item of apartmentSale|paginate:{itemsPerPage: 6, currentPage: q, id: 'q'}; let i = index">
+                      <tr *ngIf="item.user_id==user.id">
+                        <td>{{i+1}}</td>
+                        <td>{{item.diachi}}</td>
+                        <td>{{item.ngayhethan}}</td>
+                        <td>{{item.trangthai==0?'Chưa bán':"Đã bán"}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <ul class="pagination-sm">
+                    <pagination-controls (pageChange)="q = $event" id="q"></pagination-controls>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="site-section site-section-sm bg-light">
+            <div class="container">
+              <div class="row mb-5">
+                <div class="col-12">
+                  <div class="site-section-title">
+                    <h2>Nhà phố</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-12 ">
+                  <table class="table table-light">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>STT</th>
+                        <th>Điạ chỉ</th>
+                        <th>Ngày hết hạn</th>
+                        <th>Trạng thái</th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      *ngFor="let item of houseSale|paginate:{itemsPerPage: 6, currentPage: w, id: 'w'}; let i = index">
+                      <tr *ngIf="item.user_id==user.id">
+                        <td>{{i+1}}</td>
+                        <td>{{item.diachi}}</td>
+                        <td>{{item.ngayhethan}}</td>
+                        <td>{{item.trangthai==0?'Chưa bán':"Đã bán"}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <ul class="pagination-sm">
+                    <pagination-controls (pageChange)="w = $event" id="w"></pagination-controls>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="site-section site-section-sm bg-light">
+            <div class="container">
+              <div class="row mb-5">
+                <div class="col-12">
+                  <div class="site-section-title">
+                    <h2>Biệt thự</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-12 ">
+                  <table class="table table-light">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>STT</th>
+                        <th>Điạ chỉ</th>
+                        <th>Ngày hết hạn</th>
+                        <th>Trạng thái</th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      *ngFor="let item of villaSale|paginate:{itemsPerPage: 6, currentPage: e, id: 'e'}; let i = index">
+                      <tr *ngIf="item.user_id==user.id">
+                        <td>{{i+1}}</td>
+                        <td>{{item.diachi}}</td>
+                        <td>{{item.ngayhethan}}</td>
+                        <td>{{item.trangthai==0?'Chưa bán':"Đã bán"}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <ul class="pagination-sm">
+                    <pagination-controls (pageChange)="e = $event" id="e"></pagination-controls>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="site-section site-section-sm bg-light">
+            <div class="container">
+              <div class="row mb-5">
+                <div class="col-12">
+                  <div class="site-section-title">
+                    <h2>Đất nền</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-12 ">
+                  <table class="table table-light">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>STT</th>
+                        <th>Điạ chỉ</th>
+                        <th>Ngày hết hạn</th>
+                        <th>Trạng thái</th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      *ngFor="let item of plotSale|paginate:{itemsPerPage: 6, currentPage: r, id: 'r'}; let i = index">
+                      <tr *ngIf="item.user_id==user.id">
+                        <td>{{i+1}}</td>
+                        <td>{{item.diachi}}</td>
+                        <td>{{item.ngayhethan}}</td>
+                        <td>{{item.trangthai==0?'Chưa bán':"Đã bán"}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <ul class="pagination-sm">
+                    <pagination-controls (pageChange)="r = $event" id="r"></pagination-controls>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+
+
+    var readURL = function (input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('.avatar').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    $(".file-upload").on('change', function () {
+      readURL(this);
+    });
+  });</script>

@@ -1,0 +1,5 @@
+<div class="container-fluid">
+  <ng-container *ngFor="let message of messages | async">
+      <app-message-show [message]="message"></app-message-show>   
+  </ng-container>
+</div>

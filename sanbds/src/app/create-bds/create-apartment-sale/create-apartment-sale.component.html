@@ -1,0 +1,121 @@
+<div class="container" data-aos="fade" data-stellar-background-ratio="0.5"><br>
+  <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif">THÊM MỚI CĂN HỘ BÁN</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label>Giá</label>
+        <input type="number" class="form-control rounded-0" placeholder="Giá" formControlName="gia">
+        <span style="font-size:14px"
+          *ngIf="form.get('gia').touched && form.hasError('required','gia')">
+          <ul style="color: red">
+            <li> Giá không được để trống</li>
+          </ul>
+        </span>
+      </div>
+   
+      <div class="form-group col-md-3">
+        <label>Ngày hết hạn</label>
+        <input type="date" class="form-control rounded-0" placeholder="Ngày hết hạn" formControlName="ngayhethan">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Hướng nhà</label>
+        <input type="text" class="form-control rounded-0" placeholder="Hướng nhà" formControlName="huongnha">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Năm xây dựng</label>
+        <input type="number" class="form-control rounded-0" placeholder="Năm xây dựng" formControlName="namxaydung">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Địa chỉ</label>
+      <input type="text" class="form-control rounded-0" placeholder="Địa chỉ" formControlName="diachi">
+      <span style="font-size:14px"
+        *ngIf="form.get('diachi').touched && form.hasError('required','diachi')">
+        <ul style="color: red">
+          <li> Địa chỉ không được để trống</li>
+        </ul>
+      </span>
+    </div>    
+    <!-- Form Select Local -->
+    <app-form-location (bindToParent)="setDistrict($event)"></app-form-location>
+    <span style="font-size:14px"
+        *ngIf="form.get('district_id').touched && form.hasError('required','district_id')">
+        <ul style="color: red">
+          <li>Quận huyện không được để trống</li>
+        </ul>
+      </span>
+    <!-- End Form Select Local-->
+    
+    <!-- Form Select File -->
+    <app-upload-file (bindToParent)="setImageUrls($event)"></app-upload-file>
+    <!-- End Form Select File -->
+    
+    <div class="form-group">
+      <label>Mô tả</label>
+      <input type="text" class="form-control rounded-0" placeholder="Mô tả" formControlName="mota">
+
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label>Chiều dài</label>
+        <input type="number" class="form-control rounded-0" placeholder="Chiều dài" formControlName="chieudai">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Chiều rộng </label>
+        <input type="number" class="form-control rounded-0" placeholder="Chiều rộng" formControlName="chieurong">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Tên chung cư</label>
+        <input type="text" class="form-control rounded-0" placeholder="Tên chung cư" formControlName="tenchungcu">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Diện tích </label>
+        <input type="number" class="form-control rounded-0" placeholder="Diện tích tổng sàn" formControlName="dientich">
+        <span style="font-size:14px"
+          *ngIf="form.get('dientich').touched && form.hasError('required','dientich')">
+          <ul style="color: red">
+            <li> Diện tích tổng sàn không được để trống</li>
+          </ul>
+        </span>
+      </div>
+
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label>Phòng tắm</label>
+        <select class="form-control rounded-0" formControlName="phongtam">
+          <option selected disabled=disabled value="null">Chọn</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label>Phòng ngủ</label>
+        <select formControlName="phongngu" class="form-control rounded-0">
+          <option selected disabled=disabled value="null" >Chọn</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label>Số tầng</label>
+        <input type="number" class="form-control rounded-0" placeholder="Số tầng" formControlName="sotang">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Pháp lý</label>
+        <select class="form-control rounded-0" formControlName="phaply">
+          <option selected disabled=disabled value="null">Chọn</option>
+          <option value="sodo">Sổ đỏ</option>
+          <option value="sohong">Sổ hồng</option>
+        </select>
+      </div>
+    
+    </div>
+
+    <button type="submit" class="btn btn-primary rounded-0" [disabled]="form.invalid">Tạo mới</button>
+  </form>
+</div>

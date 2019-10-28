@@ -1,0 +1,212 @@
+<div class="pt-5">
+  <div class="container">
+    <form class="row mb-5" form [formGroup]="formSeach" (ngSubmit)="onSearch()">
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="select-wrap">
+          <span class="icon icon-arrow_drop_down"></span>
+          <select class="form-control d-block rounded-0" formControlName="dientich">
+            <option value="null" disabled="true" [selected]="true">Diện tích</option>
+            <option value="650">Dưới 650</option>
+            <option value="700">Dưới 700</option>
+            <option value="800">Dưới 800</option>
+            <option value="900">Dưới 900</option>
+            <option value="1000">Dưới 1000</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="select-wrap">
+          <span class="icon icon-arrow_drop_down"></span>
+          <select name="offer-types" id="offer-types" class="form-control d-block rounded-0" formControlName="huongnha">
+            <option value="null" disabled="true" [selected]="true">Hướng</option>
+            <option value="Đông">Đông</option>
+            <option value="Nam">Nam</option>
+            <option value="Tây">Tây</option>
+            <option value="Bắc">Bắc</option>
+            <option value="Đông Nam">Đông Nam</option>
+            <option value="Tây Bắc">Tây Bắc</option>
+            <option value="Tây Nam">Tây Nam</option>
+            <option value="Đông Bắc">Đông Bắc</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="form-group">
+          <select class="form-control" (change)="filterDistricts($event)">
+            <option selected disabled=disabled>Chọn tỉnh thành</option>
+            <option *ngFor="let province of provinces" [value]=province.id>
+              {{province.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="form-group">
+          <select class="form-control" formControlName="district_id">
+            <option value="null" disabled="true" [selected]="true">Chọn quận huyện</option>
+            <option *ngFor="let district of districts" [value]=district.id>
+              {{ district.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="select-wrap">
+          <span class="icon icon-arrow_drop_down"></span>
+          <select name="offer-types" id="offer-types" class="form-control d-block rounded-0" formControlName="phongngu"
+            placeholder="Chọn phòng ngủ">
+            <option value="null" disabled="true" [selected]="true">Phòng ngủ</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="select-wrap">
+          <span class="icon icon-arrow_drop_down"></span>
+          <select name="offer-types" id="offer-types" class="form-control d-block rounded-0" formControlName="phaply">
+            <option value="null" disabled="true" [selected]="true">Pháp lý</option>
+            <option value="Nhà có sổ hồng">Sổ hồng</option>
+            <option value="Nhà có sổ đỏ">Sổ đỏ</option>
+
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="select-wrap">
+          <span class="icon icon-arrow_drop_down"></span>
+          <select name="offer-types" id="offer-types" class="form-control d-block rounded-0" formControlName="gia">
+            <option value="null" disabled="true" [selected]="true">Chọn giá</option>
+            <option value="0.5">Dưới 500 triệu</option>
+            <option value="1">Từ 500 Triệu -> 1tỷ</option>
+            <option value="1.5">Từ 1 tỷ -> 1,5 tỷ</option>
+            <option value="2">Từ 1.5 tỷ -> 2 tỷ</option>
+            <option value="2.5">Từ 2 tỷ -> 2.5 tỷ</option>
+            <option value="3">Từ 2.5 tỷ -> 3 tỷ</option>
+            <option value="3.5">Từ 3 tỷ -> 3.5 tỷ</option>
+            <option value="4">Từ 3.5 tỷ -> 4tỷ</option>
+            <option value="4.5">Từ 4 tỷ -> 4.5 tỷ</option>
+            <option value="5">Từ 4.5 tỷ -> 5 tỷ</option>
+            <option value="5.5">Từ 5 tỷ -> 5.5 tỷ</option>
+            <option value="6">Từ 5.5 tỷ -> 6 tỷ</option>
+            <option value="6.5">Từ 6 tỷ -> 6.5 tỷ</option>
+            <option value="7">Từ 6.5 tỷ -> 7 tỷ</option>
+            <option value="7.5">Từ 7 tỷ -> 7.5 tỷ</option>
+            <option value="8">Từ 7.5 tỷ -> 8 tỷ</option>
+            <option value="8.5">Từ 8 tỷ -> 8.5 tỷ</option>
+            <option value="9">Từ 8.5 tỷ -> 9 tỷ</option>
+            <option value="9.5">Từ 9 tỷ -> 9.5 tỷ</option>
+            <option value="10">Từ 9.5 tỷ -> 10 tỷ</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+        <input type="submit" class="btn btn-primary btn-block form-control-same-height rounded-0" value="Tìm kiếm">
+      </div>
+    </form>
+  </div>
+</div>
+<div class="site-section site-section-sm bg-light">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12">
+        <div class="site-section-title">
+          <h2>BDS mới cho bạn</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <a class="alert-warning" *ngIf="apartmentSaleList?.length ==0"> Không tìm thấy dữ liệu</a>
+      <div class="col-md-6 col-lg-4 mb-4" *ngFor="let apartment of apartmentSaleList |paginate: { itemsPerPage: 6, currentPage: p }">
+        <app-apartment-sale-poster [apartment]="apartment"></app-apartment-sale-poster>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <ul class="pagination-sm">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-7 text-center mb-5">
+        <div class="site-section-title">
+          <h2>Dịch vụ</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-house"></span>
+          <h2 class="service-heading">Vùng ngoại ô</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-sold"></span>
+          <h2 class="service-heading">Nhà bán</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-camera"></span>
+          <h2 class="service-heading">Ưu tiên an ninh</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-house"></span>
+          <h2 class="service-heading">Vùng ngoại ô</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-sold"></span>
+          <h2 class="service-heading">Nhà bán</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="#" class="service text-center border rounded">
+          <span class="icon flaticon-camera"></span>
+          <h2 class="service-heading">Ưu tiên an ninh</h2>
+          <p><span class="read-more">Xem thêm</span></p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="site-section site-section-sm bg-primary">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h2 class="text-white">Những dự án BDS giành cho bạn !</h2>
+        <p class="lead text-white-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <a href="#" class="btn btn-outline-primary btn-block py-3 btn-lg">Xem chi tiết</a>
+      </div>
+    </div>
+  </div>
+</div>

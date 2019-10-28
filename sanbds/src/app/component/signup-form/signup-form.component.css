@@ -1,0 +1,8 @@
+.signup-form {
+    width: 400px;
+    height: auto;
+}
+
+.error-msg {
+    color: red;
+}

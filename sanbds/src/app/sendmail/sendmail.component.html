@@ -1,0 +1,70 @@
+<div class="col-md-12 border">
+  <h3>
+    <p class="bg-success text-white" style="text-align:center">Điền Thông Tin Khách Hàng</p>
+  </h3>
+  <!-- <button (click)="goBack()" class="btn btn-primary" style="margin-left:50px">Ve trang chu</button> -->
+  <form [formGroup]="form" (ngSubmit)="sendMail()">
+    <!-- Title -->
+    <div class="form-group">
+      <label for="">Tên Khách Hàng</label>
+      <input type="text" class="form-control" formControlName="name">
+    </div>
+    <div class="alert alert-danger" *ngIf="form.hasError('required','name') && form.get('name').touched">
+      Name is required
+    </div>
+    <div class="alert alert-danger" *ngIf="form.hasError('minlength','name') && form.get('name').touched">
+      Name is too short
+    </div>
+
+    <div class="form-group">
+      <label for="">Điện Thoại Khách Hàng</label>
+      <input type="text" class="form-control" formControlName="phone">
+    </div>
+    <div class="alert alert-danger" *ngIf="form.hasError('required','phone') && form.get('phone').touched">
+      phone is required
+    </div>
+    <div class="alert alert-danger" *ngIf="form.hasError('minlength','phone') && form.get('phone').touched">
+      phone is too short
+    </div>
+
+    <div class="form-group">
+      <label for="">Email Khách Hàng</label>
+      <input type="text" class="form-control" formControlName="email">
+    </div>
+    <div class="alert alert-danger" *ngIf="form.hasError('required','email') && form.get('email').touched">
+      email is required
+    </div>
+    <div class="alert alert-danger"
+      *ngIf="form.hasError('email','email') && form.get('email').touched">
+      email is invalid
+    </div>
+
+    <div class="form-group">
+      <label for="">Thông Tin Thêm</label>
+      <input type="text" class="form-control" formControlName="thongtinthem">
+    </div>
+    <div class="alert alert-danger" *ngIf="form.hasError('required','thongtinthem') && form.get('thongtinthem').touched">
+      Thông Tin Thêm is required
+    </div>
+    <div class="alert alert-danger"
+      *ngIf="form.hasError('minlength','thongtinthem') && form.get('thongtinthem').touched">
+      Thông Tin Thêm is too short
+    </div>
+
+    <div class="form-group">
+      <label for="">Ngày Đặt Lịch Hẹn</label>
+      <input type="date" class="form-control" formControlName="ngayhen">
+    </div>
+    <div class="alert alert-danger" *ngIf="form.hasError('required','ngayhen') && form.get('ngayhen').touched">
+      ngayhen is required
+    </div>
+    <div class="alert alert-danger" *ngIf="form.hasError('minlength','ngayhen') && form.get('ngayhen').touched">
+      ngayhen is too short
+    </div>
+
+    <div class="form-group">
+      <input type="submit" [disabled]="form.invalid" class="btn btn-primary" value="Submit" style="margin-right: 15px">
+      <button type="button" class="btn btn-outline-dark" (click)=comeback()>Hủy Đặt Lịch</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,32 @@
+<a routerLink="/plot-sale/detail/{{plotSale.id}}" class="prop-entry d-block">
+  <figure>
+    <img src="http://localhost:8000/storage/{{plotSale?.images[0]}}" alt="Image" class="img-fluid">
+  </figure>
+  <div class="prop-text">
+    <div class="inner">
+      <span class="price rounded">{{ plotSale.gia }} tỷ</span>
+      <h3 class="title">{{ plotSale.diachi }}</h3>
+      <p class="location">{{plotSale.district}}, {{plotSale.province}}</p>
+    </div>
+    <div class="prop-more-info">
+      <div class="inner d-flex">
+        <div class="col">
+          <span>Diện tích:</span>
+          <strong>{{plotSale.dientich}}m<sup>2</sup></strong>
+        </div>
+        <div class="col">
+          <span>Chiều dài:</span>
+          <strong>{{ plotSale.chieudai }} m</strong>
+        </div>
+        <div class="col">
+          <span>Chiều rộng:</span>
+          <strong>{{ plotSale.chieurong }} m </strong>
+        </div>
+        <div class="col">
+          <span>Hướng:</span>
+          <strong>{{ plotSale.huong }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

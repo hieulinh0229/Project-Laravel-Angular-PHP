@@ -1,0 +1,85 @@
+<!-- <div class="container"><br>
+  <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif">Phản hồi của khách hàng</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Tiêu đề</label>
+        <input type="tex" class="form-control" placeholder="Tiêu đề" formControlName="tieude">
+        <span style="font-size:14px"
+        *ngIf="form.get('tieude').touched && form.hasError('required','tieude')">
+        <ul style="color: red">
+          <li> Tiêu đề không được để trống</li>
+        </ul>
+      </span>
+      </div>
+      
+    <div class="form-group">
+        <label>Nội dung</label>
+       <textarea  cols="30" rows="10" formControlName="noidung" class="form-control"></textarea>
+       <span style="font-size:14px"
+       *ngIf="form.get('noidung').touched && form.hasError('required','noidung')">
+       <ul style="color: red">
+         <li> Nội dung không được để trống</li>
+       </ul>
+     </span>
+      </div>
+      <div class="form-group">
+        <label>Email liên hệ</label>
+        <input type="tex" class="form-control" placeholder="Email" formControlName="email">
+        <span style="font-size:14px"
+        *ngIf="form.get('email').touched && form.hasError('required','email')">
+        <ul style="color: red">
+          <li> Email không được để trống</li>
+        </ul>
+      </span>
+      </div>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Gởi phản hồi</button>
+  </form>
+</div> -->
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-5 bg-white border">
+    <h3>Góp ý/Khiếu nại</h3>
+    <div class="row form-group">
+      <div class="col-md-12 mb-3 mb-md-0">
+        <label class="font-weight-bold" for="fullname">Tiêu đề</label>
+        <input type="text" id="fullname" class="form-control rounded-0" formControlName="tieude" placeholder="Tiêu đề">
+      </div>
+      <span style="font-size:14px" *ngIf="form.get('noidung').touched && form.hasError('required','noidung')">
+        <ul style="color: red">
+          <li> Nội dung không được để trống</li>
+        </ul>
+      </span>
+    </div>
+
+    <div class="row form-group">
+      <div class="col-md-12">
+        <label class="font-weight-bold" for="message">Nội dung phản hồi</label>
+        <textarea name="message" id="message" cols="30" rows="5" class="form-control rounded-0"
+          formControlName="noidung" placeholder="Nội dung phản hồi"></textarea>
+      </div>
+      <span style="font-size:14px" *ngIf="form.get('noidung').touched && form.hasError('required','noidung')">
+        <ul style="color: red">
+          <li> Nội dung không được để trống</li>
+        </ul>
+      </span>
+    </div>
+
+    <div class="row form-group">
+      <div class="col-md-12">
+        <label class="font-weight-bold" for="email">Email của bạn</label>
+        <input type="email" id="email" class="form-control rounded-0" placeholder="Email" formControlName="email"
+          placeholder="Địa chỉ email của bạn">
+      </div>
+      <span style="font-size:14px" *ngIf="form.get('email').touched && form.hasError('required','email')">
+        <ul style="color: red">
+          <li> Email không được để trống</li>
+        </ul>
+      </span>
+    </div>
+
+    <div class="row form-group">
+      <div class="col-md-12">
+        <input type="submit" value="Send Message" class="btn btn-primary  py-2 px-4 rounded-0">
+      </div>
+    </div>
+  </form>
+</div>

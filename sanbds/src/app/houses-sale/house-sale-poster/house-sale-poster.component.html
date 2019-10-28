@@ -1,0 +1,32 @@
+<a routerLink="/house-sale/detail/{{houseSale.id}}" class="prop-entry d-block">
+  <figure>
+    <img src="http://localhost:8000/storage/{{houseSale?.images[0]}}" alt="Image" class="img-fluid">
+  </figure>
+  <div class="prop-text">
+    <div class="inner">
+      <span class="price rounded">{{ houseSale.gia }} tỷ</span>
+      <h3 class="title">{{ houseSale.diachi }}</h3>
+      <p class="location">{{houseSale.district}}, {{houseSale.province}}</p>
+    </div>
+    <div class="prop-more-info">
+      <div class="inner d-flex">
+        <div class="col">
+          <span>Diện tích:</span>
+          <strong>{{houseSale.dientich}}m<sup>2</sup></strong>
+        </div>
+        <div class="col">
+          <span>Phòng ngủ:</span>
+          <strong>{{ houseSale.phongngu }}</strong>
+        </div>
+        <div class="col">
+          <span>Phòng tắm:</span>
+          <strong>{{ houseSale.phongtam }}</strong>
+        </div>
+        <div class="col">
+          <span>Garages:</span>
+          <strong>{{houseSale.garage}}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

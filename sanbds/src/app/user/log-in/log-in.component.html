@@ -1,0 +1,51 @@
+<div class="limiter">
+	<div class="container-login100">
+		<div class="wrap-login100" *ngIf="!isLogged; else logged" data-aos="fade-left" data-aos-delay="100">
+			<div class="login100-form-title" style="background-image: url(assets/images/bg-01.jpg);">
+				<span class="login100-form-title-1">
+					Sign In
+				</span>
+			</div>
+			<form [formGroup]="formLogin" class="login100-form validate-form" (ngSubmit)="onSubmit()">
+
+				<div class="m-b-18 w-100">
+					<div class="alert alert-primary p-1" role="alert" *ngIf="error">
+						{{ error }}
+					</div>
+				</div>
+				<div class="wrap-input100 m-b-26"
+					[ngStyle]="{'border-bottom': isSubmited && (formLogin.hasError('email','email') || formLogin.hasError('required','email')) ? '1px solid #DE1739' : '1px solid #b2b2b2' }">
+					<span class="label-input100">Email</span>
+					<input class="input100" type="email" name="email" placeholder="Enter email" formControlName="email">
+				</div>
+
+				<div class="wrap-input100 m-b-18"
+					[ngStyle]="{'border-bottom': isSubmited && (formLogin.hasError('minlength','password') || formLogin.hasError('required','password')) ? '1px solid #DE1739' : '1px solid #b2b2b2' }">
+					<span class="label-input100">Password</span>
+					<input class="input100" type="password" name="pass" placeholder="Enter password"
+						formControlName="password">
+				</div>
+
+				<div class="flex-sb-m w-full p-b-30">
+					<div>
+						<a href="#" class="txt1">
+							Forgot Password?
+						</a>
+					</div>
+				</div>
+				<div class="container-login100-form-btn">
+					<button class="login100-form-btn">
+						Login
+					</button>
+				</div>
+
+				<div class="m-3">
+					<a routerLink="/signup" routerLinkActive="active">Sign Up</a>
+				</div>
+			</form>
+		</div>
+		<ng-template #logged>
+			<button (click)="logOut()">Bạn đã đăng nhập, Đăng xuất</button>
+		</ng-template>
+	</div>
+</div>

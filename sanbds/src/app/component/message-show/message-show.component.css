@@ -1,0 +1,22 @@
+img {
+    width: 40px;
+    height: auto;
+}
+
+.message {
+    border-radius: 25px;
+    background: aliceblue;
+    color: black;
+    padding: 7px 15px; 
+    width: auto;
+    height: auto; 
+  }
+
+.ownmessage {
+    border-radius: 25px;
+    background: blue;
+    color: white;
+    padding: 7px 15px; 
+    width: auto;
+    height: auto; 
+  }
